@@ -1,25 +1,6 @@
-import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-import random
-import math
 
-"""
-
-df_1999 = pd.read_csv('./new_data/1999-2000.csv')
-data1999 = df_1999.rename(columns = {'SEQN' : 'ID',
-                          'DXDRLLE' : 'Right_leg_EXBMC',
-                          'DXDRALE' : 'Right_arm_EXBMC',
-                          'DXDLLLE' : 'Left_leg_EXBMC',
-                          'DXDLALE' : 'Left_arm_EXBMC'})
-data1999 = data1999.loc[:, ['ID', 'Right_leg_EXBMC', 'Right_arm_EXBMC', 'Left_leg_EXBMC','Left_arm_EXBMC']]
-data1999['Total_BMC'] = data1999['Right_leg_EXBMC'] + data1999['Right_arm_EXBMC'] + data1999['Left_leg_EXBMC'] + data1999['Left_arm_EXBMC']
-data1999['Arm_BMC'] = data1999['Right_arm_EXBMC'] + data1999['Left_arm_EXBMC']
-data1999['Leg_BMC'] = data1999['Right_leg_EXBMC'] + data1999['Left_leg_EXBMC']
-data1999.to_csv('1999-2000-ok.csv',index=False)
-
-
-df_1999 = pd.read_csv('../new_data/1999-2000(Demo).csv')
+df_1999 = pd.read_csv('../new_data/1999-2000Demography_DEMO.csv')
 data1999 = df_1999.loc[:, ['SEQN','RIAGENDR','RIDAGEYR','RIDAGEMN','RIDAGEEX','RIDRETH1','DMDEDUC3','DMDEDUC2',
                            'DMDMARTL','RIDEXPRG','RIDPREG']]
 data1999 = data1999.rename(columns={'SEQN': 'ID',
@@ -34,8 +15,8 @@ data1999 = data1999.rename(columns={'SEQN': 'ID',
                                    'RIDEXPRG': 'Pregnancy_Status_at_Exam',
                                    'RIDPREG': 'Pregnancy_Status',
                                    })
-data1999.to_csv('../new_data/1999-2000-demo-ok.csv', index=False)
-"""
+data1999.to_csv('../preprocessed/1999-2000Demography_DEMO-ok.csv', index=False)
+
 df_1999 = pd.read_csv('../new_data/1999-2000MuscleMassDXA_All Years.csv')
 data1999 = df_1999.loc[:, ['SEQN',
                            'DXXLAFAT',
@@ -94,4 +75,58 @@ data1999 = data1999.rename(columns={'SEQN': 'ID',
                                     'DXDTOTOT': 'TotalLean_Fat',
                                     'DXDTOPF': 'TotalPercentFat',
                                     })
-data1999.to_csv('../new_data/1999-2000MuscleMassDXA_All Years-ok.csv', index=False)
+data1999.to_csv('../preprocessed/1999-2000MuscleMassDXA_All Years-ok.csv', index=False)
+
+df_1999 = pd.read_csv('../new_data/1999-2000MuscleStrength_MSX.csv')
+data1999 = df_1999.loc[:, ['SEQN',
+                           'MSDEXCLU',
+                           'MSXWTIME',
+                           'MSXWPAIN',
+                           'MSXARML',
+                           'MSDAPF']]
+data1999 = data1999.rename(columns={'SEQN': 'ID',
+                                    'MSDEXCLU': 'Exclusion_criteria_for_muscle_strength',
+                                    'MSXWTIME': 'Time_to_complete_20_ft_walk',
+                                    'MSXWPAIN': 'Pain_reported_on_walking',
+                                    'MSXARML': 'Arm_length_cm',
+                                    'MSDAPF': 'Average_peak_force',
+                                    })
+data1999.to_csv('../preprocessed/1999-2000MuscleStrength_MSX-ok.csv', index=False)
+
+df_1999 = pd.read_csv('../new_data/1999-2000Cardiovascular_CDQHealth.csv')
+data1999 = df_1999.loc[:, ['SEQN',
+                           'CDQ010',
+                           'CDQ020',
+                           'CDQ030',
+                           'CDQ040']]
+data1999 = data1999.rename(columns={'SEQN': 'ID',
+                                    'CDQ010': 'Shortness_of_breath_on_stairs_inclines',
+                                    'CDQ020': 'Short_of_breath_walking_on_level_surface',
+                                    'CDQ030': 'Stop_for_breath_walking_at_own_pace',
+                                    'CDQ040': 'Stop_for_breath_walking_100_yards',
+                                    })
+data1999.to_csv('../preprocessed/1999-2000Cardiovascular_CDQHealth-ok.csv', index=False)
+
+df_1999 = pd.read_csv('../new_data/1999-2000Diabetes.csv')
+data1999 = df_1999.loc[:, ['SEQN',
+                           'DIQ010',
+                           'DIQ050',
+                           'DIQ080']]
+data1999 = data1999.rename(columns={'SEQN': 'ID',
+                                    'DIQ010': 'Doctor_told_you_have_diabetes',
+                                    'DIQ050': 'Taking_insulin_now',
+                                    'DIQ080': 'Diabetes_affected_eyes_had_retinopathy',
+                                    })
+data1999.to_csv('../preprocessed/1999-2000Diabetes-ok.csv', index=False)
+
+df_1999 = pd.read_csv('../new_data/1999-2000Diet_DRXTOT.csv')
+data1999 = df_1999.loc[:, ['SEQN',
+                           'DIQ010',
+                           'DIQ050',
+                           'DIQ080']]
+data1999 = data1999.rename(columns={'SEQN': 'ID',
+                                    'DIQ010': 'Doctor_told_you_have_diabetes',
+                                    'DIQ050': 'Taking_insulin_now',
+                                    'DIQ080': 'Diabetes_affected_eyes_had_retinopathy',
+                                    })
+data1999.to_csv('../preprocessed/1999-2000Diabetes-ok.csv', index=False)
